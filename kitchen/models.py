@@ -24,5 +24,3 @@ class Dish(models.Model):
         related_name="dishes",
     )
     cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes",)
-
-
