@@ -8,7 +8,6 @@ from django.http import HttpRequest, HttpResponse
 from kitchen.models import DishType, Cook, Dish
 
 
-@login_required
 def index(request):
     """View function for the home page of the site."""
 
@@ -20,9 +19,9 @@ def index(request):
     request.session["num_visits"] = num_visits + 1
 
     context = {
-        "num_dish_type ": num_dish_type,
-        "num_num_cook": num_cook,
-        "num_num_dish": num_dish,
+        "num_dish_type": num_dish_type,
+        "num_cook": num_cook,
+        "num_dish": num_dish,
         "num_visits": num_visits + 1,
     }
 

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (
+from kitchen.views import (
     index,
 )
 
