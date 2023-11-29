@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Dish types</h1>
+
+  {% for dish_type in dish_type_list %}
+    <li><a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}">{{ dish_type.name }}</a></li>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Information of cooks</h1>
+  <p><strong>First name:</strong> {{ cook.first_name }}</p>
+  <p><strong>Last name:</strong> {{ cook.last_name }}</p>
+  <p><strong>Year of experience:</strong>
+      {% if cook.year_of_experience is None %} 0
+      {% else %} {{ cook.year_of_experience }}
+      {% endif %}
+  </p>
+  <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
+
+<h4>Dishes</h4>
+{% for dish in cook.dishes.all %}
+    <li>{{ dish.name }}</li>
+    {% empty %}
+        <p> ----- No dishes -----</p>
+{% endfor %}
+
+
+{% endblock %}
