@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Dish type</h1>
 <p>Dishes</p>
-{% for dish in dish_type.dishes.all %}
+{% for dish in dish_type_detail.dishes.all %}
     <li>{{ dish.name }}</li>
 {% endfor %}
 {% endblock %}
