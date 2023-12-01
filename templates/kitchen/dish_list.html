@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Dishes</h1>
+  <h1>Dishes
+    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">Create new dishes</a>
+  </h1>
 
   {% for dish in dish_list %}
     <li>
