@@ -45,13 +45,25 @@ class DishTypeDetailView(LoginRequiredMixin, generic.DetailView):
     context_object_name = "dish_type_detail"
 
 
-# class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
-#     model = DishType
-#     form_class = DishForm
-#     success_url = reverse_lazy("taxi:car-list")
+class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = DishType
+    fields = "__all__"
+    template_name = "kitchen/dish_type_form.html"
+    context_object_name = "dish_type_form"
+    success_url = reverse_lazy("kitchen:dish-type-list")
+
+
+class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = DishType
+    fields = "__all__"
+    template_name = "kitchen/dish_type_form.html"
+    context_object_name = "dish_type_form"
+    success_url = reverse_lazy("kitchen:dish-type-list")
+
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
+    fields = "__all__"
     paginate_by = 5
 
 
@@ -91,15 +103,4 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = DishForm
     success_url = reverse_lazy("kitchen:dish-list")
 
-
-# @login_required
-# def toggle_assign_to_car(request, pk):
-#     cook = Cook.objects.get(id=request.user.id)
-#     if (
-#         Car.objects.get(id=pk) in driver.cars.all()
-#     ):  # probably could check if car exists
-#         driver.cars.remove(pk)
-#     else:
-#         cook.cars.add(pk)
-#     return HttpResponseRedirect(reverse_lazy("taxi:car-detail", args=[pk]))
 

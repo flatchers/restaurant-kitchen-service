@@ -10,6 +10,7 @@
       {% endif %}
   </p>
   <p><strong>Is staff:</strong> {{ cook.is_staff }}</p>
+    <p class="text-muted"><strong>Id:</strong> {{cook.id}}</p>
 
 <h4>Dishes</h4>
 {% for dish in cook.dishes.all %}
@@ -17,6 +18,7 @@
     {% empty %}
         <p> ----- No dishes -----</p>
 {% endfor %}
-
-
+    <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
+       Update
+    </a>
 {% endblock %}

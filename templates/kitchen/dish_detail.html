@@ -11,4 +11,7 @@
     {% for cook in dish.cooks.all %}
     <li>{{ cook.first_name }} {{ cook.last_name }}</li>
     {% endfor %}
+    <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+       Update
+    </a>
 {% endblock %}

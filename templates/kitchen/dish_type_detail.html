@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Dish type</h1>
-<p>Dishes</p>
-{% for dish in dish_type_detail.dishes.all %}
-    <li>{{ dish.name }}</li>
-{% endfor %}
+<h1>Dishes</h1>
+    {% for dish in dish_type_detail.dishes.all %}
+        <li>{{ dish.name }}</li>
+{% empty %}
+    <p>There are no dishes in the restaurant.</p>
+    {% endfor %}
+
+
+
 {% endblock %}
