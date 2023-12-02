@@ -8,7 +8,7 @@ from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from kitchen.forms import DishForm, CookCreationForm, CookExperienceUpdateForm, DishTypeSearchForm
+from kitchen.forms import DishForm, CookCreationForm, CookExperienceUpdateForm, DishTypeSearchForm, CookSearchForm
 from kitchen.models import DishType, Cook, Dish
 
 
@@ -87,6 +87,22 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
     fields = "__all__"
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CookListView, self).get_context_data(**kwargs)
+        first_name = self.request.GET.get("first_name", "")
+        context["search_form"] = CookSearchForm(
+            initial={"first_name": first_name}
+        )
+        return context
+
+    def get_queryset(self):
+        form = CookSearchForm(self.request.GET)
+        if form.is_valid():
+            return Cook.objects.filter(
+                first_name__icontains=form.cleaned_data["first_name"]
+            )
+        return Cook
 
 
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
