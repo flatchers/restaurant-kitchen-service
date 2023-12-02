@@ -5,6 +5,8 @@
     <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-primary link-to-page">Create</a>
   </h1>
 
+  {% include "includes/search_form.html" %}
+
   {% if dish_type_list %}
     <table class="table">
       <tr>
