@@ -6,26 +6,36 @@ from django.core.exceptions import ValidationError
 from kitchen.models import Dish, Cook
 
 
-class CookExperienceUpdateForm(forms.ModelForm):
-    class Meta:
-        model = Cook
-        fields = ("username", "first_name", "last_name", "year_of_experience", "email", )
-
-    def clean_year_of_experience(self):
-        year_of_experience = self.cleaned_data["year_of_experience"]
-        if year_of_experience > 42:
-            raise ValidationError(
-                "Selected age is unacceptable.We fire people after 60"
-            )
-        return year_of_experience
+def validate_year_of_experience(year_of_experience):
+    if year_of_experience > 42:
+        raise ValidationError(
+            "Selected age is unacceptable.We fire people after 60"
+        )
+    return year_of_experience
 
 
-class CookCreationForm(UserCreationForm, CookExperienceUpdateForm):
+class ExperienceForm(forms.ModelForm):
+    year_of_experience = forms.CharField(validators=[validate_year_of_experience])
+
+
+class CookCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
             "first_name", "last_name", "year_of_experience",
         )
+
+    def clean_year_of_experience(self):  # this logic is optional, but possible
+        return validate_year_of_experience(self.cleaned_data["year_of_experience"])
+
+
+class CookExperienceUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ["year_of_experience"]
+
+    def clean_license_number(self):
+        return validate_year_of_experience(self.cleaned_data["year_of_experience"])
 
 
 class DishForm(forms.ModelForm):
