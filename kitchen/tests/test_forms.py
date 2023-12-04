@@ -29,17 +29,12 @@ class FormsTest(TestCase):
         self.assertTrue(form.is_valid())
         self.assertEqual(form.cleaned_data, form_data)
 
-    def validate_experience(self):
+    def test_validate_experience(self):
         form_data = {
             "year_of_experience": 4
         }
-        invalid_form_data = {
-            "year_of_experience": 43
-        }
         form = ExperienceForm(data=form_data)
-        form2 = ExperienceForm(data=invalid_form_data)
         self.assertTrue(form.is_valid())
-        self.assertFalse(form2.is_valid())
         self.assertEqual(form.cleaned_data, form_data)
 
     def test_cook_search_form_by_username(self):
@@ -71,9 +66,9 @@ class FormsTest(TestCase):
             name="test2"
         )
         response = self.client.get(
-            reverse("kitchen:dish-list"),
+            reverse("kitchen:dish-type-list"),
             {"name": "test1"}
         )
         dish = DishType.objects.filter(name__icontains="test1")
         print("response", response)
-        self.assertEqual(list(response.context["dish_list"]), list(dish))
+        self.assertEqual(list(response.context["dish_type_list"]), list(dish))

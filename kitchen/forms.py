@@ -14,8 +14,8 @@ def validate_year_of_experience(year_of_experience):
     return year_of_experience
 
 
-class ExperienceForm(forms.ModelForm):
-    year_of_experience = forms.CharField(validators=[validate_year_of_experience])
+class ExperienceForm(forms.Form):
+    year_of_experience = forms.IntegerField(validators=[validate_year_of_experience])
 
 
 class CookCreationForm(UserCreationForm):
