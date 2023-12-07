@@ -1,3 +1,5 @@
+{% extends 'layouts/base-presentation.html' %}
+
 body {
     margin-top: 20px;
 }
