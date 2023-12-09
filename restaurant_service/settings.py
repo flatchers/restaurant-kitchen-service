@@ -23,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-e##8j%@3e*#6fi#&4rx+jei@e45iteu^^*s08%965cwn@$87*s")
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-e##8j%@3e*#6fi#&4rx+jei@e45iteu^^*s08%965cwn@$87*s")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
@@ -139,6 +140,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "kitchen.Cook"
 
-LOGIN_REDIRECT_URL = "/kitchen/"
+LOGIN_REDIRECT_URL = "/"
 
 
