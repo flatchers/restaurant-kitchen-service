@@ -2,7 +2,7 @@
 Django project for managing kitchen and cooks
 
 ## Check it out
-[Restaurant project deployed to render](https://restaurant-kitchen-service.render.com/)
+[Restaurant project deployed to render](https://restaurant-mate-lqjl.onrender.com/)
 
 ## Installation
 Python must be already installed
