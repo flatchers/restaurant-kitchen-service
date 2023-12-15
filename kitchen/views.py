@@ -151,8 +151,3 @@ class DishUpdateView(LoginRequiredMixin, generic.UpdateView):
 class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Dish
     success_url = reverse_lazy("kitchen:dish-list")
-
-
-def logout_view(request):
-    logout(request)
-    return render(request, "logged_out.html")
