@@ -26,3 +26,6 @@ python manage.py runserver
 - Managing dishes cooks & dishes type directly from website interface
 - Powerful admin panel for advanced managing
 
+## Credentials
+username: user_check
+password: K5FjRYjhqdJdZUU
