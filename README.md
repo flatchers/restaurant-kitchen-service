@@ -6,7 +6,8 @@ Django project for managing kitchen and cooks
 
 ## Installation
 Python must be already installed
-
+<pre>
+  <code>
 '''shell
 git clone https://github.com/flatchers/restaurant-kitchen-service.git
 cd restaurant-kitchen-service
@@ -14,6 +15,8 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py runserver
+    </code>
+</pre>
 
 ## Features
 
