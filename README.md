@@ -6,10 +6,7 @@ Django project for managing kitchen and cooks
 
 ## Installation
 Python must be already installed
-<<<<<<< HEAD
-=======
 
->>>>>>> ed00af4d15e2c87c87b485dd715d462820d75383
 <pre>
   <code>
 '''shell
@@ -21,6 +18,7 @@ pip install -r requirements.txt
 python manage.py runserver
     </code>
 </pre>
+
 
 ## Features
 
